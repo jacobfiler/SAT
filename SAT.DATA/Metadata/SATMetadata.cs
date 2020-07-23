@@ -55,6 +55,7 @@ namespace SAT.DATA//Metadata
 
         [Required(ErrorMessage ="* Enrollment Date is Required *")]
         [Display(Name ="Enrollment Date")]
+        [DisplayFormat(NullDisplayText = "N/A", DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime EnrollmentDate { get; set; }
     }
 
@@ -74,10 +75,12 @@ namespace SAT.DATA//Metadata
 
         [Required(ErrorMessage = "* Start Date is Required *")]
         [Display(Name = "Start Date")]
+        [DisplayFormat(NullDisplayText = "N/A", DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "* End Date is Required *")]
         [Display(Name = "End Date")]
+        [DisplayFormat(NullDisplayText = "N/A", DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "* Instructor Name is Required *")]
@@ -117,7 +120,14 @@ namespace SAT.DATA//Metadata
 
     #region Students
     [MetadataType(typeof(StudentMetadata))]
-    public partial class Student { }
+    public partial class Student
+    {
+        [Display(Name ="Name")]
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
+    }
 
     public class StudentMetadata
     {
@@ -134,6 +144,7 @@ namespace SAT.DATA//Metadata
         public string LastName { get; set; }
 
         [Required(ErrorMessage ="* Date of Birth is Required *")]
+        [DisplayFormat(NullDisplayText = "N/A", DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime DOB { get; set; }
 
         [Range(0, 4, ErrorMessage ="* Must be Between 0 and 4")]
@@ -161,8 +172,10 @@ namespace SAT.DATA//Metadata
         [StringLength(12, ErrorMessage ="* Maximum 12 Characters")]
         public string Phone { get; set; }
 
+        [DisplayFormat(NullDisplayText = "N/A", DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> StartDate { get; set; }
 
+        [Display(Name ="Photo")]
         [StringLength(50, ErrorMessage ="* Maximum 50 Characters")]
         public string PhotoURL { get; set; }
 
