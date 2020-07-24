@@ -23,8 +23,15 @@
 }
 
 
-.main-bg{
+body {
+    margin-top: 100px;
+    /*width: 100%; /* Full width (cover the whole page) */ 
+    background-image: url(/Content/assets/img/michael-marsh-U0dBV_QeiYk-unsplash.jpg);
     width: 100%;
-    height: 40%;
-    background-color: coral;
+
+    background-color: rgba(221, 147, 13,.5); /* Black background with opacity */
+}
+
+.nav li a.active {
+    color: #d9232d !important;
 }

@@ -45,13 +45,13 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo"><a href=@Url.Action("Index", "Home")>Sailor</a></h1>
+            <h1 class="logo"><a href=@Url.Action("Index", "Home")>S.A.T.</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href=@Url.Action("Index", "Home")>Home</a></li>
+                    <li><a href=@Url.Action("Index", "Home")>Home</a></li>
                     @if (Request.IsAuthenticated)
                     {
                         <li><a href=@Url.Action("Index", "Students")>Students</a></li>
@@ -63,7 +63,7 @@
                         <li><a href=@Url.Action("Index", "Cours")>Courses</a></li>
                     }
 
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href=@Url.Action("Contact", "Home")>Contact</a></li>
                     @Html.Partial("_LoginPartial")
                 </ul>
 
@@ -79,6 +79,7 @@
     <main id="main">
         @RenderBody()
     </main><!-- End #main -->
+
     <!-- ======= Footer ======= -->
     <footer id="footer">
 
@@ -118,3 +119,28 @@
 
 </html>
 @RenderSection("scripts", required: false)
+<script>
+    //highlight selected navigation - class setup in the custom.css
+    $('.nav li a').each(function () {
+        var fullAnchor = $(this).attr('href');
+        var aController = fullAnchor.split('/');
+        var fullPath = (window.location.pathname + location.search).substr(1);
+        var pController = fullPath.split('/');
+        if (fullPath.indexOf('?') != -1) {
+            pController = fullPath.split('?');
+        }
+        if (aController[1] == pController[0]) {
+            $(this).addClass('active');
+        }
+        //if the controller is Home, but the path does NOT match the ENTIRE anchor -remove
+        //the class(prevents 2 nav elements from showing selected simultaneously)
+        if (aController[1] == 'Home' && window.location.pathname != fullAnchor) {
+            $(this).removeClass();
+        }
+
+        //same for register and login
+        if (aController[1] == 'Account' && window.location.pathname != fullAnchor) {
+            $(this).removeClass();
+        }
+    });
+</script>
