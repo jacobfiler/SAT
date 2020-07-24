@@ -44,6 +44,7 @@ namespace SAT.DATA//Metadata
     public class EnrollmentMetadata
     {
         //public int EnrollmentID { get; set; }
+        [Display(Name = "Student")]
         [Required(ErrorMessage ="* Student ID is Required *")]
         [Range(0, double.MaxValue, ErrorMessage ="* Must be greater than zero")]
         public int StudentID { get; set; }
@@ -108,12 +109,12 @@ namespace SAT.DATA//Metadata
 
         [Required(ErrorMessage ="* Scheduled Class Name is Required *")]
         [StringLength(30, ErrorMessage ="* Maximum 30 Characters")]
-        [Display(Name ="Scheduled Class name")]
+        [Display(Name ="Name")]
         public string SCName { get; set; }
 
         [Required(ErrorMessage ="* Scheduled Class Description is Required *")]
         [StringLength(40, ErrorMessage ="* Maximum 40 Characters")]
-        [Display(Name ="Scheduled Class Description")]
+        [Display(Name ="Description")]
         public string SCDescription { get; set; }
     }
     #endregion
@@ -195,11 +196,13 @@ namespace SAT.DATA//Metadata
     {
         //public int SSID { get; set; }
 
-        [Required(ErrorMessage ="* SSName is Required *")]
+        [Required(ErrorMessage ="* Status Name is Required *")]
+        [Display(Name = "Status")]
         [StringLength(30, ErrorMessage ="* Maximum 30 Characters")]
         public string SSName { get; set; }
 
         [Required(ErrorMessage ="* SSDescription is Required *")]
+        [Display(Name = "Description")]
         [StringLength(50, ErrorMessage ="* Maximum 50 Chacracters")]
         public string SSDescription { get; set; }
     }

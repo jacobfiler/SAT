@@ -4,36 +4,50 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SCName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SCDescription)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SCName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SCDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SCID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SCID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SCID })
-        </td>
-    </tr>
+<div class="col-md-10 offset-1 custom-formatting">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SCName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SCDescription)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SCName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SCDescription)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SCID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SCID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SCID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-outline-success" })
+    </p>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
 }
-
-</table>

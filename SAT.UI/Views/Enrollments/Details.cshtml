@@ -3,10 +3,7 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
+<div class="col-md-10 offset-1 custom-formatting">
     <h4>Enrollment</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -35,8 +32,9 @@
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EnrollmentID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EnrollmentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

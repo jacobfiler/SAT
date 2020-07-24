@@ -4,15 +4,15 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+<div class="col-md-10 offset-1 custom-formatting">
+
     <div class="form-horizontal">
-        <h4>Enrollment</h4>
+        <h4>Create New Enrollment</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -39,18 +39,18 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+        <div class=" no-color">
+            <input type="submit" value="Create" class="btn btn-outline-success" />
+            <div class="float-right">@Html.ActionLink("Back to List", "Index")</div>
         </div>
     </div>
-}
+    </div>
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
